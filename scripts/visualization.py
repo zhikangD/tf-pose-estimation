@@ -63,7 +63,7 @@ def cb_pose(data):
         humans.append(human)
 
     # draw
-    image = TfPoseEstimator.draw_humans(image, humans, imgcopy=False)
+    image,_ = TfPoseEstimator.draw_humans(image, humans, imgcopy=False)
     pub_img.publish(cv_bridge.cv2_to_imgmsg(image, 'bgr8'))
 
 

@@ -42,7 +42,7 @@ if __name__ == '__main__':
 
     logger.info('inference image: %s in %.4f seconds.' % (args.image, elapsed))
 
-    image = TfPoseEstimator.draw_humans(image, humans, imgcopy=False)
+    image,_ = TfPoseEstimator.draw_humans(image, humans, imgcopy=False)
     # cv2.imshow('tf-pose-estimation result', image)
     # cv2.waitKey()
 

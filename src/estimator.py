@@ -292,8 +292,10 @@ class TfPoseEstimator:
         if imgcopy:
             npimg = np.copy(npimg)
         image_h, image_w = npimg.shape[:2]
-        centers = {}
+        body=[]
+
         for human in humans:
+            centers = {}
             # draw point
             for i in range(common.CocoPart.Background.value):
                 if i not in human.body_parts.keys():
@@ -310,8 +312,9 @@ class TfPoseEstimator:
                     continue
 
                 npimg = cv2.line(npimg, centers[pair[0]], centers[pair[1]], common.CocoColors[pair_order], 3)
-
-        return npimg
+            print(centers)
+            body.append(centers)
+        return npimg,body
 
     def _get_scaled_img(self, npimg, scale):
         get_base_scale = lambda s, w, h: max(self.target_size[0] / float(w), self.target_size[1] / float(h)) * s
